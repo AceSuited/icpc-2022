@@ -1,5 +1,6 @@
 import heapq
 import sys
+input = lambda: sys.stdin.readline().strip()
 inf = 10e6
 n,e = map(int,input().split())
 
@@ -13,7 +14,7 @@ for _ in range(e):
 v1, v2 = map(int,input().split())
 
 
-def solve(start, target):
+def solve(start):
     heap = []
     visited = [False for _ in range(n + 1)]
     dist = [inf for _ in range(n+1)]
@@ -31,9 +32,9 @@ def solve(start, target):
     return dist
 
 
-one_to_n = solve(1,n)
-v1_to_n = solve(v1,n)
-v2_to_n = solve(v2,n)
+one_to_n = solve(1)
+v1_to_n = solve(v1)
+v2_to_n = solve(v2)
 
 
 ans = min(one_to_n[v1] + v1_to_n[v2] + v2_to_n[n], one_to_n[v2] + v2_to_n[v1] + v1_to_n[n])
